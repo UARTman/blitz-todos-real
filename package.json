@@ -8,7 +8,9 @@
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "prettier": {
     "semi": false,
@@ -20,25 +22,38 @@
     ]
   },
   "dependencies": {
+    "@blitzjs/auth": "",
     "@blitzjs/next": "",
+    "@blitzjs/rpc": "",
+    "@prisma/client": "4.11.0",
     "blitz": "",
     "next": "13.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "ts-node": "10.9.1",
-    "@blitzjs/rpc": "",
-    "@blitzjs/auth": ""
+    "zod": "3.21.4"
   },
   "devDependencies": {
+    "@babel/core": "7.21.3",
     "@next/bundle-analyzer": "12.0.8",
+    "@storybook/addon-actions": "6.5.16",
+    "@storybook/addon-essentials": "6.5.16",
+    "@storybook/addon-interactions": "6.5.16",
+    "@storybook/addon-links": "6.5.16",
+    "@storybook/builder-webpack5": "6.5.16",
+    "@storybook/manager-webpack5": "6.5.16",
+    "@storybook/react": "6.5.16",
+    "@storybook/testing-library": "0.0.13",
     "@testing-library/jest-dom": "5.16.3",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@typescript-eslint/eslint-plugin": "5.30.5",
     "@vitejs/plugin-react": "2.2.0",
+    "babel-loader": "8.3.0",
     "eslint": "8.27.0",
-    "eslint-config-prettier": "8.5.0",
     "eslint-config-next": "12.3.1",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-storybook": "0.6.11",
     "husky": "8.0.2",
     "jsdom": "20.0.3",
     "lint-staged": "13.0.3",

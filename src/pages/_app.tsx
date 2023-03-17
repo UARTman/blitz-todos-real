@@ -1,5 +1,5 @@
 import { ErrorFallbackProps, ErrorComponent, ErrorBoundary, AppProps } from "@blitzjs/next"
-import React from "react"
+import React, { Suspense } from "react"
 import { withBlitz } from "src/blitz-client"
 
 function RootErrorFallback({ error }: ErrorFallbackProps) {
@@ -15,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
   return (
     <ErrorBoundary FallbackComponent={RootErrorFallback}>
-      {getLayout(<Component {...pageProps} />)}
+      <Suspense fallback="Loading...">
+        {getLayout(<Component {...pageProps} />)}
+      </Suspense>
     </ErrorBoundary>
   )
 }

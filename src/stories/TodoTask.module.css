@@ -1,0 +1,10 @@
+.task-line {
+    display: flex;
+    max-width: 834px;
+    margin: auto;
+}
+
+.task-edit {
+    flex-grow: 1;
+    min-width: min-content;
+}

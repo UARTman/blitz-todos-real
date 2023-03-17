@@ -114,3 +114,43 @@ The Blitz community is warm, safe, diverse, inclusive, and fun! Feel free to rea
 - [Forum discussions](https://github.com/blitz-js/blitz/discussions)
 - [How to Contribute](https://blitzjs.com/docs/contributing)
 - [Sponsor or donate](https://github.com/blitz-js/blitz#sponsors-and-donations)
+## Setting up db
+- Install Postgres.
+- Alter file `pg_hba.conf` to allow conntecting to the database:
+  ```conf
+  # "local" is for Unix domain socket connections only
+  local   all             all                                     trust
+  # IPv4 local connections:
+  host    all             all             127.0.0.1/32            trust
+  # IPv6 local connections:
+  host    all             all             ::1/128                 trust
+  ```
+- Restart posgresql.
+  ```sh
+  systemctl restart postgresql
+  ```
+- Open the shell:
+  ```sh
+  sudo su postgres
+  psql
+  ```
+- Create and set up the user/database:
+  ```sql
+  create database blitztodos;
+  create user blitz with password 'test';
+  grant all privileges on database blitztodos to blitz;
+  alter user blitz createdb;
+  ```
+- Close the sql shell and open it for the `blitztodos` database.
+  ```sh
+  psql blitztodos
+  ```
+- Grant schema permissions:
+  ```sql
+  grant all privileges on schema public to blitz;
+  ```
+- Return from the sql shell and then from su.
+- Run the prisma migrations:
+  ```sh
+  npx prisma migrate dev
+  ```
